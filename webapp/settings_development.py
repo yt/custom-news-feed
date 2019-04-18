@@ -6,7 +6,7 @@ DEBUG = True
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql', 
-    'NAME': 'mysql_db',
+    'NAME': 'news_feed_db',
     'USER': os.getenv("LOCAL_DB_USER"),
     'PASSWORD': os.getenv("LOCAL_DB_PASSWORD"),
     'HOST': 'database',
