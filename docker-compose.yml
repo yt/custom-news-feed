@@ -6,6 +6,7 @@ services:
     image: mysql:5.6
     environment:
       MYSQL_DATABASE: news_feed_db
+      MYSQL_ROOT_PASSWORD: admin
     ports:
       - "3306:3306"
 
