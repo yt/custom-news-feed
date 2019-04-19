@@ -2,6 +2,13 @@ version: '3'
 
 services:
 
+  database:
+    image: mysql:5.6
+    environment:
+      MYSQL_DATABASE: news_feed_db
+    ports:
+      - "3306:3306"
+
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
@@ -9,3 +16,4 @@ services:
       - .:/code
     ports:
       - "8000:8000"
+  
