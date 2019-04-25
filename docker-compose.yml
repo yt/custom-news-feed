@@ -6,14 +6,31 @@ services:
     image: mysql:5.6
     environment:
       MYSQL_DATABASE: news_feed_db
+      MYSQL_ROOT_PASSWORD: admin
     ports:
       - "3306:3306"
-
+    volumes:
+      - news-feed-mysql-vol:/var/lib/mysql/data
+    networks:
+      - news-feed-local
+    
+      
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
+    env_file:
+      - .env
     volumes:
       - .:/code
     ports:
       - "8000:8000"
-  
+    networks:
+      - news-feed-local
+
+volumes:
+  news-feed-mysql-vol:
+    external: true
+
+networks:
+    news-feed-local:
+      external: true

@@ -7,8 +7,8 @@ DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql', 
     'NAME': 'news_feed_db',
-    'USER': os.getenv("LOCAL_DB_USER"),
-    'PASSWORD': os.getenv("LOCAL_DB_PASSWORD"),
+    'USER': os.environ["LOCAL_DB_USER"],
+    'PASSWORD': os.environ["LOCAL_DB_PASSWORD"],
     'HOST': 'database',
     'PORT': '3306',
   }
