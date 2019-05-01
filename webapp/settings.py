@@ -118,5 +118,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if os.getenv("APP_ENV") is not "PROD":
+if os.getenv("APP_ENV", 'PROD') is not "PROD":
     from .settings_development import *
