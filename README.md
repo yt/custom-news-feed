@@ -4,3 +4,22 @@
 3. Setup `.env` file according to `.env-example`
 4. Run `docker-compose build` to build the dependencies.
 5. Run `docker-compose up` to start application.
+
+# Debugging:
+1. Based on `docker-compose.override.example.yml` create a `docker-compose.override.yml`
+2. Create launch.json file with the following
+```
+{
+  "name": "Remote Django App",
+  "type": "python",
+  "request": "attach",
+  "pathMappings": [
+    {
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "/code"
+    }
+  ],
+  "port": 3500,
+  "host": "localhost"
+}
+```
