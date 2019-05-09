@@ -11,8 +11,6 @@ services:
       - "3306:3306"
     volumes:
       - news-feed-mysql-vol:/var/lib/mysql/data
-    networks:
-      - news-feed-local
     
       
   web:
@@ -24,13 +22,8 @@ services:
       - .:/code
     ports:
       - "8000:8000"
-    networks:
-      - news-feed-local
 
 volumes:
   news-feed-mysql-vol:
     external: true
 
-networks:
-    news-feed-local:
-      external: true

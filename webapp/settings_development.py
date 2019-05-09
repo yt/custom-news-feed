@@ -6,11 +6,11 @@ DEBUG = True
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql', 
-    'NAME': 'news_feed_db',
-    'USER': os.environ["LOCAL_DB_USER"],
-    'PASSWORD': os.environ["LOCAL_DB_PASSWORD"],
-    'HOST': 'database',
-    'PORT': '3306',
+    'NAME': os.getenv("DB_NAME", 'news_feed_db'),
+    'USER': os.getenv("DB_USER"),
+    'PASSWORD': os.getenv("DB_PASSWORD"),
+    'HOST': os.getenv("DB_HOST", 'database'),
+    'PORT': os.getenv("DB_PORT", 3306),
   }
 }
 
