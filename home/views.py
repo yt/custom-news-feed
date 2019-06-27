@@ -1,15 +1,11 @@
 from django.shortcuts import render
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-
+@login_required(login_url='/login')
 def home(request):
     template = 'home/home.html'
-
-    if request.user.is_authenticated:
-        print("User is logged in")
-    else:
-        print("User is not logged in")
         
-    return render(request, template)
+    return render(request, template, {})
+
     
