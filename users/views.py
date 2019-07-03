@@ -45,10 +45,8 @@ def user_register(request):
     user.phone_number = form.cleaned_data['phone_number']
     user.save()
 
-    # TODO Login the user here
-    # TODO redirect to accounts page HttpResponseRedirect()
-
-    return render(request, template, {'form': form})
+    login(request, user)
+    return HttpResponseRedirect('/')
 
 
 def user_login(request):
@@ -67,16 +65,10 @@ def user_login(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
     user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        return render(request, template, {
-            'form': form,
-            'error_message': 'YOU ARE IN' # TODO log in
-        })
-    else:
+    if user is None:
         return render(request, template, {
             'form': form,
             'error_message': 'Wrong username or password.'
         })
-
-    return render(request, template, {'form': form})
+    login(request, user)
+    return HttpResponseRedirect('/')
